@@ -811,6 +811,8 @@ def get_thermo_data(output):
             for col in columns:
                 current_run[col] = []
 
+        elif in_run and line.startswith("Fix halt"):
+            continue
         elif line.startswith("Loop time of "):
             in_run = False
             columns = None
