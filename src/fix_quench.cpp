@@ -100,9 +100,9 @@ void FixQuench::initial_integrate(int /*vflag*/)
     for (int i = 0; i < nlocal; i++) {
       if (mask[i] & groupbit) {
         dtfm = dtf / rmass[i];
-        v[i][0] += dtfm * f[i][0] - gamma*v[i][0];
-        v[i][1] += dtfm * f[i][1] - gamma*v[i][1];
-        v[i][2] += dtfm * f[i][2] - gamma*v[i][2];
+        v[i][0] += dtfm * f[i][0] - gamma*v[i][0]*dtf;
+        v[i][1] += dtfm * f[i][1] - gamma*v[i][1]*dtf;
+        v[i][2] += dtfm * f[i][2] - gamma*v[i][2]*dtf;
 
         x[i][0] += dtv * v[i][0];
         x[i][1] += dtv * v[i][1];
@@ -114,9 +114,9 @@ void FixQuench::initial_integrate(int /*vflag*/)
     for (int i = 0; i < nlocal; i++) {
       if (mask[i] & groupbit) {
         dtfm = dtf / mass[type[i]];
-        v[i][0] += dtfm * f[i][0] - gamma*v[i][0];
-        v[i][1] += dtfm * f[i][1] - gamma*v[i][1];
-        v[i][2] += dtfm * f[i][2] - gamma*v[i][2];
+        v[i][0] += dtfm * f[i][0] - gamma*v[i][0]*dtf;
+        v[i][1] += dtfm * f[i][1] - gamma*v[i][1]*dtf;
+        v[i][2] += dtfm * f[i][2] - gamma*v[i][2]*dtf;
 
         x[i][0] += dtv * v[i][0];
         x[i][1] += dtv * v[i][1];
@@ -145,9 +145,9 @@ void FixQuench::final_integrate()
     for (int i = 0; i < nlocal; i++) {
       if (mask[i] & groupbit) {
         dtfm = dtf / rmass[i];
-        v[i][0] += dtfm * f[i][0] - gamma*v[i][0];
-        v[i][1] += dtfm * f[i][1] - gamma*v[i][1];
-        v[i][2] += dtfm * f[i][2] - gamma*v[i][2];
+        v[i][0] += dtfm * f[i][0] - gamma*v[i][0]*dtf;
+        v[i][1] += dtfm * f[i][1] - gamma*v[i][1]*dtf;
+        v[i][2] += dtfm * f[i][2] - gamma*v[i][2]*dtf;
       }
     }
 
@@ -155,9 +155,9 @@ void FixQuench::final_integrate()
     for (int i = 0; i < nlocal; i++) {
       if (mask[i] & groupbit) {
         dtfm = dtf / mass[type[i]];
-        v[i][0] += dtfm * f[i][0] - gamma*v[i][0];
-        v[i][1] += dtfm * f[i][1] - gamma*v[i][1];
-        v[i][2] += dtfm * f[i][2] - gamma*v[i][2];
+        v[i][0] += dtfm * f[i][0] - gamma*v[i][0]*dtf;
+        v[i][1] += dtfm * f[i][1] - gamma*v[i][1]*dtf;
+        v[i][2] += dtfm * f[i][2] - gamma*v[i][2]*dtf;
       }
     }
   }
